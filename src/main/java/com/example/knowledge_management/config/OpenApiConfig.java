@@ -1,4 +1,3 @@
-
 package com.example.knowledge_management.config;
 
 import io.swagger.v3.oas.models.Components;
@@ -10,8 +9,11 @@ import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class OpenApiConfig {
+
     @Bean
     public OpenAPI customOpenAPI() {
 
@@ -20,6 +22,11 @@ public class OpenApiConfig {
                         .title("Knowledge Management System API")
                         .version("1.0")
                         .description("API documentation for Knowledge Management System"))
+                .servers(List.of(
+                        new Server()
+                                .url("https://knowledge-management-production-db46.up.railway.app")
+                                .description("Railway Production Server")
+                ))
                 .components(new Components()
                         .addSecuritySchemes(
                                 "bearerAuth",
@@ -34,6 +41,5 @@ public class OpenApiConfig {
                                 .addList("bearerAuth")
                 );
     }
-
-    }
+}
 
