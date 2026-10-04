@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
-
     @Bean
     public OpenAPI customOpenAPI() {
 
@@ -21,11 +20,6 @@ public class OpenApiConfig {
                         .title("Knowledge Management System API")
                         .version("1.0")
                         .description("API documentation for Knowledge Management System"))
-                .servers(java.util.List.of(
-                        new Server()
-                                .url("https://knowledge-management-production-db46.up.railway.app")
-                                .description("Production Server")
-                ))
                 .components(new Components()
                         .addSecuritySchemes(
                                 "bearerAuth",
@@ -40,4 +34,6 @@ public class OpenApiConfig {
                                 .addList("bearerAuth")
                 );
     }
-}
+
+    }
+
